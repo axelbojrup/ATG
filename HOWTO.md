@@ -8,10 +8,17 @@ Build the image:
 docker build -t swapi-elt .
 ```
 
-Run the full ELT pipeline (`atg` ingestion + `dbt build`) and write `swapi/dev.duckdb` to your local `swapi/` directory:
+Run the full orchestrated ELT pipeline via Dagster (`raw/*` ingestion + `dbt build` + tests) and write `swapi/dev.duckdb` to your local `swapi/` directory:
 
 ```bash
 docker run --rm -v "$(pwd)/swapi:/app/swapi" swapi-elt
+```
+
+Or start the Dagster UI (at http://localhost:3000) inside the container:
+
+```bash
+docker run --rm -p 3000:3000 -v "$(pwd)/swapi:/app/swapi" swapi-elt \
+  uv run dagster dev -h 0.0.0.0 -p 3000
 ```
 
 ### Querying the data
@@ -27,7 +34,23 @@ Because DuckDB is file-based and `swapi/` is mounted into the container, `swapi/
 
 ---
 
-## Option 2: Run Locally with `uv`
+## Option 2: Run with Dagster (Orchestrated ELT)
+
+Start the Dagster UI (webserver + daemon) locally to inspect the full asset lineage (`raw/*` -> `staging` -> `intermediate` -> `marts`), trigger runs, or enable `swapi_daily_schedule`:
+
+```bash
+uv run dagster dev
+```
+
+Or materialize the entire asset graph from the CLI:
+
+```bash
+uv run dagster asset materialize -m atg.orchestration --select "*"
+```
+
+---
+
+## Option 3: Run Locally with `uv`
 
 ```bash
 uv run atg && DUCKDB_PATH=swapi/dev.duckdb uv run dbt build --project-dir swapi --profiles-dir swapi

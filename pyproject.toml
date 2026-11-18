@@ -8,6 +8,9 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "dagster>=1.13.30",
+    "dagster-dbt>=0.29.30",
+    "dagster-webserver>=1.13.30",
     "dbt-duckdb>=1.11.1",
     "duckdb<2.0",
     "requests>=2.34.2",
@@ -19,3 +22,6 @@ atg = "atg:main"
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.dagster]
+module_name = "atg.orchestration"
