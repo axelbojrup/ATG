@@ -1,0 +1,9 @@
+.venv/
+.git/
+__pycache__/
+*.pyc
+swapi/target/
+swapi/logs/
+swapi/dev.duckdb
+swapi/dev.duckdb.wal
+logs/

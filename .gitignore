@@ -24,3 +24,6 @@ wheels/
 
 # Logs
 logs/
+
+# macOS Finder metadata
+.DS_Store
