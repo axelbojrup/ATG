@@ -1,0 +1,6 @@
+swapi:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH', 'swapi/dev.duckdb') }}"

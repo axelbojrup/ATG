@@ -1,2 +1,3 @@
-def main() -> None:
-    print("Hello from atg!")
+from atg.ingest import main
+
+__all__ = ["main"]

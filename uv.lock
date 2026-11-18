@@ -36,12 +36,14 @@ source = { editable = "." }
 dependencies = [
     { name = "dbt" },
     { name = "dbt-duckdb" },
+    { name = "requests" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "dbt", specifier = ">=2.0.12" },
     { name = "dbt-duckdb", specifier = ">=1.11.1" },
+    { name = "requests", specifier = ">=2.34.2" },
 ]
 
 [[package]]

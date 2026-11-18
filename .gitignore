@@ -8,3 +8,19 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local environment variables
+.env
+
+# Editor settings
+.vscode/
+
+# dbt generated user telemetry ID
+.user.yml
+
+# DuckDB database files
+*.duckdb
+*.duckdb.wal
+
+# Logs
+logs/
