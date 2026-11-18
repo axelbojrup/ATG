@@ -1,0 +1,128 @@
+version: 2
+
+models:
+  - name: int_film_characters
+    description: "Normalized bridge between films and characters."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_films')
+                field: film_id
+      - name: person_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_people')
+                field: person_id
+
+  - name: int_film_planets
+    description: "Normalized bridge between films and planets."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_films')
+                field: film_id
+      - name: planet_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_planets')
+                field: planet_id
+
+  - name: int_film_starships
+    description: "Normalized bridge between films and starships."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_films')
+                field: film_id
+      - name: starship_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_starships')
+                field: starship_id
+
+  - name: int_film_vehicles
+    description: "Normalized bridge between films and vehicles."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_films')
+                field: film_id
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_vehicles')
+                field: vehicle_id
+
+  - name: int_film_species
+    description: "Normalized bridge between films and species."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_films')
+                field: film_id
+      - name: species_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_species')
+                field: species_id
+
+  - name: int_person_vehicles
+    description: "Normalized bridge between people and vehicles."
+    columns:
+      - name: person_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_people')
+                field: person_id
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_vehicles')
+                field: vehicle_id
+
+  - name: int_person_starships
+    description: "Normalized bridge between people and starships."
+    columns:
+      - name: person_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_people')
+                field: person_id
+      - name: starship_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_starships')
+                field: starship_id

@@ -1,0 +1,120 @@
+version: 2
+
+models:
+  - name: dim_films
+    description: "One row per Star Wars film."
+    columns:
+      - name: film_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_people
+    description: "One row per character, enriched with homeworld and species names."
+    columns:
+      - name: person_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_planets
+    description: "One row per planet."
+    columns:
+      - name: planet_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_species
+    description: "One row per species, enriched with homeworld name."
+    columns:
+      - name: species_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_starships
+    description: "One row per starship."
+    columns:
+      - name: starship_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_vehicles
+    description: "One row per vehicle."
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: person_vehicles
+    description: "Pre-joined person and vehicle pairs."
+    columns:
+      - name: person_id
+        data_tests:
+          - not_null
+      - name: vehicle_id
+        data_tests:
+          - not_null
+
+  - name: person_starships
+    description: "Pre-joined person and starship pairs."
+    columns:
+      - name: person_id
+        data_tests:
+          - not_null
+      - name: starship_id
+        data_tests:
+          - not_null
+
+  - name: film_characters
+    description: "Pre-joined film and character pairs."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+      - name: person_id
+        data_tests:
+          - not_null
+
+  - name: film_planets
+    description: "Pre-joined film and planet pairs."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+      - name: planet_id
+        data_tests:
+          - not_null
+
+  - name: film_starships
+    description: "Pre-joined film and starship pairs."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+      - name: starship_id
+        data_tests:
+          - not_null
+
+  - name: film_vehicles
+    description: "Pre-joined film and vehicle pairs."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+      - name: vehicle_id
+        data_tests:
+          - not_null
+
+  - name: film_species
+    description: "Pre-joined film and species pairs."
+    columns:
+      - name: film_id
+        data_tests:
+          - not_null
+      - name: species_id
+        data_tests:
+          - not_null

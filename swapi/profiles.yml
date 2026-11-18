@@ -3,4 +3,4 @@ swapi:
   outputs:
     dev:
       type: duckdb
-      path: "{{ env_var('DUCKDB_PATH', 'swapi/dev.duckdb') }}"
+      path: "{{ env_var('DUCKDB_PATH', 'dev.duckdb') }}"

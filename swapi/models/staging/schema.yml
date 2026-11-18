@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: stg_films
+    description: "Cleaned Star Wars films with integer film_id and normalized text/arrays."
+    columns:
+      - name: film_id
+        data_tests:
+          - unique
+          - not_null
+      - name: episode_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_people
+    description: "Cleaned Star Wars characters with integer IDs, parsed numerics, and standardized nulls."
+    columns:
+      - name: person_id
+        data_tests:
+          - unique
+          - not_null
+      - name: homeworld_planet_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_planets')
+                field: planet_id
+      - name: species_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_species')
+                field: species_id
+
+  - name: stg_planets
+    description: "Cleaned Star Wars planets with integer planet_id, parsed numerics, and standardized nulls."
+    columns:
+      - name: planet_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_species
+    description: "Cleaned Star Wars species with normalized classification/designation and parsed numerics."
+    columns:
+      - name: species_id
+        data_tests:
+          - unique
+          - not_null
+      - name: homeworld_planet_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_planets')
+                field: planet_id
+
+  - name: stg_starships
+    description: "Cleaned Star Wars starships with integer starship_id, parsed numerics, and crew ranges."
+    columns:
+      - name: starship_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_vehicles
+    description: "Cleaned Star Wars vehicles with integer vehicle_id, parsed numerics, and standardized nulls."
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - unique
+          - not_null

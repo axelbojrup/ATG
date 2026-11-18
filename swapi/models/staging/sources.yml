@@ -1,0 +1,65 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw Star Wars API (SWAPI) resources ingested into DuckDB."
+    schema: raw
+    loaded_at_field: _ingested_at
+    tables:
+      - name: films
+        description: "Star Wars films from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
+          - name: episode_id
+            data_tests:
+              - unique
+              - not_null
+
+      - name: people
+        description: "Star Wars characters from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
+
+      - name: planets
+        description: "Star Wars planets from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
+
+      - name: species
+        description: "Star Wars species from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
+
+      - name: starships
+        description: "Star Wars starships from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
+
+      - name: vehicles
+        description: "Star Wars vehicles from SWAPI."
+        columns:
+          - name: url
+            description: "Unique SWAPI resource URL."
+            data_tests:
+              - unique
+              - not_null
